@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Displays tasks information of a given employee
+"""
 from requests import get
 from sys import argv
 

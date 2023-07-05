@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-Displays tasks information of a given employee
+"""Displays tasks information of a given employee
 """
 import requests
 import sys

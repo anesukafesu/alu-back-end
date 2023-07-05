@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Displays tasks information of a given employee
 """
-import requests
-import sys
+from requests import get
+from sys import argv
 
 
 def get_data(url):
@@ -10,7 +10,7 @@ def get_data(url):
     params:
         - url (str) - the URL endpoint
     """
-    request = requests.get(url)
+    request = get(url)
 
     if request.status_code == 200:
         try:
@@ -23,7 +23,7 @@ def main():
     """The main function from which the whole program starts
     """
     # Extract the user id from the script arguments
-    employee_id = sys.argv[1]
+    employee_id = argv[1]
 
     # Getting the name
     user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
@@ -50,5 +50,4 @@ def main():
 
 
 if __name__ == "__main__":
-    """Documenting"""
     main()

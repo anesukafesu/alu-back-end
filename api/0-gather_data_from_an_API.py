@@ -39,14 +39,13 @@ def main():
     for todo in todos:
         if todo["completed"]:
             number_of_completed_todos += 1
-    
 
-    print(f'Employee {name} is done with tasks({number_of_completed_todos}/{total_number_of_todos})')
+    print(
+        f'Employee {name} is done with tasks({number_of_completed_todos}/{total_number_of_todos})')
 
     for todo in todos:
         if todo["completed"]:
             print(f'\t {todo["title"]}')
-
 
 
 if __name__ == "__main__":

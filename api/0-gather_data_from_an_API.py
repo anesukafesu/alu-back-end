@@ -21,6 +21,8 @@ def get_data(url):
 
 
 def main():
+    """The main function from which the whole program starts
+    """
     # Extract the user id from the script arguments
     employee_id = argv[1]
 

@@ -23,26 +23,30 @@ def get_data(url):
 def main():
     """The main function from which the whole program starts
     """
+
+    #Base url
+    base_url = 'https://jsonplaceholder.typicode.com/'
+
     # Extract the user id from the script arguments
     employee_id = argv[1]
 
     # Getting the name
-    user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+    user_url = base_url + f'/users/{employee_id}'
     name = get_data(user_url).get('name')
 
     # Getting the todos
-    tasks_url = f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
+    tasks_url = base_url + f'/todos?userId={employee_id}'
     todos = get_data(tasks_url)
 
-    total_number_of_todos = len(todos)
-    number_of_completed_todos = 0
+    n_todos = len(todos)
+    n_completed_todos = 0
 
     for todo in todos:
         if todo.get('completed'):
-            number_of_completed_todos += 1
+            n_completed_todos += 1
 
     print(
-        f'Employee {name} is done with tasks({number_of_completed_todos}/{total_number_of_todos})')
+        f'Employee {name} is done with tasks({n_completed_todos}/{n_todos})')
 
     for todo in todos:
         if todo.get('completed'):

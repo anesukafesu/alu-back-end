@@ -24,7 +24,7 @@ def main():
     """The main function from which the whole program starts
     """
 
-    #Base url
+    # Base url
     base_url = 'https://jsonplaceholder.typicode.com/'
 
     # Extract the user id from the script arguments

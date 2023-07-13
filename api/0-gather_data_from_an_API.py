@@ -11,13 +11,15 @@ def get_data(url):
     params:
         - url (str) - the URL endpoint
     """
-    request = get(url)
+    request = get(url, verify=False)
 
-    if request.get('status_code') == 200:
+    if request.status_code == 200:
         try:
             return request.json()
         except:
             raise Exception("")
+    else:
+        raise Exception(request.status_code)
 
 
 def main():
@@ -25,7 +27,7 @@ def main():
     """
 
     # Base url
-    base_url = 'https://jsonplaceholder.typicode.com/'
+    base_url = 'https://jsonplaceholder.typicode.com'
 
     # Extract the user id from the script arguments
     employee_id = argv[1]
@@ -46,7 +48,7 @@ def main():
             n_completed_todos += 1
 
     print(
-        'Employee' + name + 'is done with tasks(' + n_completed_todos + '/' + n_todos + ')')
+        'Employee' + name + 'is done with tasks(' + str(n_completed_todos) + '/' + str(n_todos) + ')')
 
     for todo in todos:
         if todo.get('completed'):

@@ -31,11 +31,11 @@ def main():
     employee_id = argv[1]
 
     # Getting the name
-    user_url = base_url + f'/users/{employee_id}'
+    user_url = base_url + "/users/" + employee_id
     name = get_data(user_url).get('name')
 
     # Getting the todos
-    tasks_url = base_url + f'/todos?userId={employee_id}'
+    tasks_url = base_url + '/todos?userId=' + employee_id
     todos = get_data(tasks_url)
 
     n_todos = len(todos)
@@ -46,11 +46,11 @@ def main():
             n_completed_todos += 1
 
     print(
-        f'Employee {name} is done with tasks({n_completed_todos}/{n_todos})')
+        'Employee' + name + 'is done with tasks(' + n_completed_todos + '/' + n_todos + ')')
 
     for todo in todos:
         if todo.get('completed'):
-            print(f'\t {todo.get("title")}')
+            print('\t ' + todo.get("title"))
 
 
 if __name__ == "__main__":

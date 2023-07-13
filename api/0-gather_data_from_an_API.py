@@ -48,7 +48,7 @@ def main():
             n_completed_todos += 1
 
     print(
-        'Employee' + name + 'is done with tasks(' + str(n_completed_todos) + '/' + str(n_todos) + ')')
+        'Employee ' + name + ' is done with tasks(' + str(n_completed_todos) + '/' + str(n_todos) + '):')
 
     for todo in todos:
         if todo.get('completed'):

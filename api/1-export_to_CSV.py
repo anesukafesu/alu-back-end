@@ -8,7 +8,7 @@ from sys import argv
 
 def get_data(url):
     """gets data from an api"""
-    request = get(url)
+    request = get(url, verify=False)
     
     if request.status_code == 200:
         return request.json()
@@ -20,23 +20,25 @@ def main():
     """program starting point"""
     user_id = argv[1]
 
+    base_url = 'https://jsonplaceholder.typicode.com'
+
     # Get user data
-    user_data_url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
-    username = get_data(user_data_url)["username"]
+    user_data_url = '{}/users/{}'.format(base_url, user_id)
+    username = get_data(user_data_url).get('username')
 
     # Get todos
-    todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={user_id}'
+    todos_url = '{}/todos?userId={}'.format(base_url, user_id)
     todos = get_data(todos_url)
 
     # Create text to write
     text = ''
     
     for todo in todos:
-        todo_status = todo["completed"]
-        todo_title = todo["title"]
-        text += f'"{user_id}","{username}","{todo_status}","{todo_title}"\n'
+        todo_status = todo.get('completed')
+        todo_title = todo.get('title')
+        text += '"{}","{}","{}","{}"\n'.format(user_id, username, todo_status, todo_title)
 
-    with open(f'{user_id}.csv', "w") as f:
+    with open('{}.csv'.format(user_id), "w") as f:
         f.write(text)
 
 

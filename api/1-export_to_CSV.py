@@ -9,7 +9,7 @@ from sys import argv
 def get_data(url):
     """gets data from an api"""
     request = get(url, verify=False)
-    
+ 
     if request.status_code == 200:
         return request.json()
     else:
@@ -32,11 +32,12 @@ def main():
 
     # Create text to write
     text = ''
-    
+
     for todo in todos:
         todo_status = todo.get('completed')
         todo_title = todo.get('title')
-        text += '"{}","{}","{}","{}"\n'.format(user_id, username, todo_status, todo_title)
+        text += '"{}","{}","{}","{}"\n'.format(
+                user_id, username, todo_status, todo_title)
 
     with open('{}.csv'.format(user_id), "w") as f:
         f.write(text)

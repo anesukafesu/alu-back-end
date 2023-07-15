@@ -9,7 +9,7 @@ from sys import argv
 def get_data(url):
     """gets data from an api"""
     request = get(url, verify=False)
- 
+
     if request.status_code == 200:
         return request.json()
     else:

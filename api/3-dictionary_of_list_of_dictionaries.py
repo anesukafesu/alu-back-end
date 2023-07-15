@@ -40,7 +40,7 @@ def main():
     # Add todos to data object
     for todo in todos:
         user_id = todo["userId"]
-        task_data = { 
+        task_data = {
             'username': users_hashmap.get(user_id),
             'task': todo.get('title'),
             'completed': todo.get('completed')
